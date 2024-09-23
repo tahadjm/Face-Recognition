@@ -1,0 +1,38 @@
+.center{
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    padding: 40px;
+    border: inherit solid 3px;
+    border-radius: 3px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.584);
+}
+p{
+    font-size: 1.5rem;
+    font-weight: 550;
+    color: #000000;
+    margin-bottom: 20px;
+}
+.input{
+    padding: 2px;
+    width: 70%;
+    text-align: center;
+    font-weight: 400;
+}
+button{
+    width: 30%;
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    transform: scale(1);
+    cursor: pointer; /* Adds a pointer cursor */
+    border: 1px solid rgb(0, 204, 255);
+    color:white;
+    padding: 1rem,0.5rem;
+    background-color: #d3a6e6;
+}
+button:hover,
+button:focus {
+    transform: scale(1.05); 
+}

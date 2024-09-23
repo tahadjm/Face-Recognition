@@ -1,0 +1,126 @@
+*{
+    padding:0px;
+    margin: 0px;
+    font-family:'Poppins' sans-serif;
+    box-sizing: border-box;
+    --clr-light:#f1f5f9;
+    --clr-text:#e6e6ea;
+    --clr-taha:#e11d48;
+    --clr-dark:#0f172a;
+    --clr-epic:#18181c;
+    --clr-epic2:#18181c;
+    --clr-d:#4a90e2;
+    --custom-gradient-bg:linear-gradient(rgba(9,0,77,0.65),rgba(9,0,77,0.65));
+    --custom-gradient: linear-gradient(to right, #4a90e2, #7b68ee);
+    --custom-gradientreverse:linear-gradient(rgba(255, 107, 107, 0.3), rgba(85, 98, 112, 0.3));;
+    --text-gradient: linear-gradient(to left, #65239e, #0fccf2);
+    --clr-footer:#303034;
+
+}
+body, body * {
+    text-decoration: none;
+}
+
+
+nav {
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 0;
+    text-transform: uppercase;}
+
+.user summary img {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    margin-right: 5px;
+    background-color: #d723ef;
+    border-radius: 100%;
+    transition: 0.3s ease-in-out;
+}
+.user summary img:hover{
+    background-color: #23cdef;
+}
+.user {
+    font-family: Arial, sans-serif;
+    padding: 0px 50px;
+    margin-bottom: 20px;
+    position: relative; 
+    padding-top: 10px;
+}
+
+.user summary {
+    cursor: pointer;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    }
+
+.user .list {
+    margin-top: 10px;
+    border-radius: 8px;
+    background-color: var(--clr-epic);
+    position: absolute;
+    visibility: hidden;
+    top: calc(100% + 10px);
+    left: 0%; 
+    transform: translateX(-50%); 
+    z-index: 1;
+}
+
+
+.user summary:focus + .list,
+.user .list:hover {
+    visibility: visible; 
+}
+
+
+.user .list div {
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.user .list ul  {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.user .list ul li {
+    transition: filter, 0.5s ease-in-out; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding:0;
+    margin:0;
+}
+
+.user .list ul li:hover {
+    transition: 0.6 ease in out;
+    border-color: #43444b; 
+    border-radius: 15px;
+    background-color: #1c1e25;
+}
+.user ul li img {
+    display: flex;
+    justify-content: end;
+    align-self: flex-end;
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+} 
+
+
+
+.user ul li a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+    color: var(--clr-text);
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+}

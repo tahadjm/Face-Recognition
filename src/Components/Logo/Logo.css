@@ -1,0 +1,14 @@
+.Tilt-container{
+    background: linear-gradient(89deg ,#FF5EDF 0%,#05C8DE);
+    /* Logo.css */
+    height: 100px;
+    width: 100px;
+    background-color: #f0f0f0; /* Change this to your desired color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.taha{
+    color: yellow;
+    background-color: #fff;
+}
