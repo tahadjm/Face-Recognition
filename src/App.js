@@ -1,121 +1,125 @@
 import './App.css';
-import { useEffect, useMemo, useState } from "react";
+import { Component } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-// import { loadAll } from "@tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
-// import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
-import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
-//import FaceRecognition from './FaceRecognition'
-import Logo from './Components/Logo/Logo'
-import Navigation from './Components/Navigation/Navigation'
-import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm'
-import 'tachyons'
-import Rank from './Components/Rank/Rank'
+import { loadSlim } from "@tsparticles/slim"; 
+import Logo from './Components/Logo/Logo';
+import Navigation from './Components/Navigation/Navigation';
+import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
+import 'tachyons';
+import Rank from './Components/Rank/Rank';
+import FaceRecognition from './Components/FaceRecognition/FaceRecognition'
 
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      init: false,
+      input:'',
 
-const App = () => {
-  const [init, setInit] = useState(false);
+    };
+  }
+  oninputchange = (event) => {
+    console.log(event.target.value);
+  }
+  onpress = (key) => {
+    console.log('click')
+  }
 
-  // this should be run only once per application lifetime
-  useEffect(() => {
+  componentDidMount() {
     initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
       await loadSlim(engine);
-      //await loadBasic(engine);
     }).then(() => {
-      setInit(true);
+      this.setState({ init: true });
     });
-  }, []);
+  }
 
-  const particlesLoaded = (container) => {
+  particlesLoaded = (container) => {
     console.log(container);
   };
 
-  const options = useMemo(
-    () => ({
-
-      fpsLimit: 120,
-      interactivity: {
-        events: {
-          onClick: {
-            enable: true,
-            mode: "push",
-          },
-          onHover: {
-            enable: true,
-            mode: "repulse",
-          },
+  options = {
+    fpsLimit: 120,
+    interactivity: {
+      events: {
+        onClick: {
+          enable: true,
+          mode: "push",
         },
-        modes: {
-          push: {
-            quantity: 4,
-          },
-          repulse: {
-            distance: 200,
-            duration: 0.4,
-          },
+        onHover: {
+          enable: true,
+          mode: "repulse",
         },
       },
-      particles: {
-        color: {
-          value: "#ffffff",
+      modes: {
+        push: {
+          quantity: 4,
         },
-        links: {
-          color: "#ffffff",
-          distance: 150,
-          enable: true,
-          opacity: 0.5,
-          width: 1,
-        },
-        move: {
-          direction: "none",
-          enable: true,
-          outModes: {
-            default: "bounce",
-          },
-          random: false,
-          speed: 6,
-          straight: false,
-        },
-        number: {
-          density: {
-            enable: true,
-          },
-          value: 400,
-        },
-        opacity: {
-          value: 0.5,
-        },
-        shape: {
-          type: "circle",
-        },
-        size: {
-          value: { min: 1, max: 5 },
+        repulse: {
+          distance: 200,
+          duration: 0.4,
         },
       },
-      detectRetina: true,
-    }),
-    [],
-  );
+    },
+    particles: {
+      color: {
+        value: "#ffffff",
+      },
+      links: {
+        color: "#ffffff",
+        distance: 180,
+        enable: true,
+        opacity: 0.5,
+        width: 1,
+      },
+      move: {
+        direction: "none",
+        enable: true,
+        outModes: {
+          default: "bounce",
+        },
+        random: false,
+        speed: 1,
+        straight: false,
+      },
+      number: {
+        density: {
+          enable: true,
+        },
+        value: 400,
+      },
+      opacity: {
+        value: 0.5,
+      },
+      shape: {
+        type: "circle",
+      },
+      size: {
+        value: { min: 1, max: 2 },
+      },
+    },
+    detectRetina: true,
+  };
 
-  if (init) {
+  render() {
+    const { init } = this.state;
+
+    if (!init) return null;
+
     return (
       <div className="App">
-              <Particles
+        <Particles
           id="tsparticles"
-          particlesLoaded={particlesLoaded}
-          options={options}
+          particlesLoaded={this.particlesLoaded}
+          options={this.options}
         />
         <Navigation />
         <Logo />
         <Rank />
-        <ImageLinkForm />
+        <ImageLinkForm  oninputchange={this.oninputchange} onpress={this.onpress} />
+        <FaceRecognition />
       </div>
     );
-}
+  }
 }
 
 export default App;
